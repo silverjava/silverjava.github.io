@@ -11,15 +11,13 @@ Docker作为轻量级的虚拟化技术已经发展到了1.1的版本，然而�
 
 这篇文章要介绍的是Dockerode，它是基于Javascript的一个客户端，项目地址：https://github.com/apocas/dockerode 。在Node使用它非常简单，首先使用NPM安装：
 
-
-``` bash install dockerode
+```
 npm install --save dockerode
 ```
 
 下面的代码可以列出所有Image的信息：
 
-``` javascript list all images
-
+```
 var Docker = require('dockerode');
 var docker = new Docker({ socketPath: '/var/run/docker.sock' });
 
@@ -30,7 +28,7 @@ docker.listImages({}, function (err, data) {
 ```
 在我本机得到的输出是：
 
-``` javascript images
+```
 [ { Created: 1404876476,
     Id: 'c13376ac176f3de146ef5dc895fac2135e322b746070ee8c368f206b2e636ab3',
     ParentId: '84773e31a0d1fd7a0498fd2d4cf6d6f16c756c030f0a7ddcf1077cb653f4d3bb',
@@ -59,7 +57,7 @@ docker.listImages({}, function (err, data) {
 
 其他例子就不再说了，大家有兴趣可以看看官方提供的例子。不过，这里有一点需要特别指出就是Dockerode对Stream支持的很好。有了它，我们就可以实现很多好玩的东西，比如：实现在Web页面上的Terminal，这个在我后续的文章会介绍如何实现，这里先给一个命令行版本：
 
-``` javascript
+```
 var Docker = require('../lib/docker');
 var fs     = require('fs');
 

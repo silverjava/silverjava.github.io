@@ -8,10 +8,8 @@ categories:
 
 先来看看JSR335是如何定义它的：
 
-```
-A functional interface is an interface that has just one abstract method, and thus represents a single function contract. (In some cases, this "single" method may take the form of multiple abstract methods with override-equivalent signatures inherited from superinterfaces; in this case, the inherited methods logically represent a single method.)
-```
 
+> A functional interface is an interface that has just one abstract method, and thus represents a single function contract. (In some cases, this "single" method may take the form of multiple abstract methods with override-equivalent signatures inherited from superinterfaces; in this case, the inherited methods logically represent a single method.)
 
 这是什么意思呢？第一点很容易理解：这个接口只能有一个抽象方法。换句话说，就是一个接口只定义一个方法，那么这样的接口就可以看做是一个Functional Interface了。很简单，而且这样的接口在当前的JDK里很容易找到，比如Runnable就是一个，因为只有一个run方法。
 

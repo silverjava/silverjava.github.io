@@ -16,7 +16,7 @@ categories:
 
 但是，最讨厌的来了，这个定义后面还有一个很长的括号，这句话看起来不是很容易理解，那么我们来几个例子：
 
-```
+```java
 interface X { int m(Iterable<String> arg); }
 interface Y { int m(Iterable<String> arg); }
 
@@ -27,7 +27,7 @@ interface Z extends X, Y {}
 
 再来看个例子：
 
-```
+```java
 interface X { Iterable m(Iterable<String> arg); }
 interface Y { Iterable<String> m(Iterable arg); }
 interface Z extends X, Y {}
@@ -35,13 +35,13 @@ interface Z extends X, Y {}
 
 Z还是不是functional interface呢？不是特别清楚？那先看返回值，X.m的返回值是Iterable，而Y.m的返回值是Iterable<String>，是不是Y.m的返回值可以被X.m的返回值替换？这种情况叫做return-type-substatutable。好，接着看参数，貌似也是类似的样子，Y.m的参数是可以包含X.m的参数的，所以，我们的Z应该生成一个什么样的方法？也许是下面的：
 
-```
+```java
 Iterable m(Iterable arg);
 ```
 
 或者
 
-```
+```java
 Iterable<String> m(Iterable arg);
 ```
 
@@ -58,7 +58,7 @@ Iterable<String> m(Iterable arg);
 
 如果我们要对一个数组进行简单的排序，以前可以这么做：
 
-```
+```java
 String[] strArray = {"2", "1", "3"};
 Arrays.sort(strArray, new Comparator<String>() {
             @Override
@@ -70,7 +70,7 @@ Arrays.sort(strArray, new Comparator<String>() {
 
 那么现在呢？我们看到接口Comparator其实是个functional interface，那么他到底带给我们什么好处？看下面的代码：
 
-```
+```java
 String[] strArray = {"2", "1", "3"};
 Arrays.sort(strArray, (o1, o2) -> o1.compareTo(o2));
 ```
@@ -79,7 +79,7 @@ Arrays.sort(strArray, (o1, o2) -> o1.compareTo(o2));
 
 **自定义functional interface**
 
-```
+```java
 public interface Foo {
     void bar(String name);
 }
@@ -87,7 +87,7 @@ public interface Foo {
 
 我们先定义了一个这样的接口或者就叫他functional interface，那么，怎么用它？
 
-```
+```java
 Foo foo = (x) -> System.out.println("Hello " + x);
 foo.bar("David");
 
